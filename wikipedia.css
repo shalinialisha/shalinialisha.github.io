@@ -1,0 +1,1218 @@
+/* ==========================================================================
+   Shali Pedia — Wikipedia-faithful CSS
+   A faithful replica of Wikipedia's visual style for a portfolio site.
+   ========================================================================== */
+
+/* ---------- CSS Reset & Base ---------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: sans-serif, Helvetica, Arial;
+    font-size: 0.875em;
+    line-height: 1.6;
+    color: #202122;
+    background-color: #f6f6f6;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------- Links ---------- */
+a {
+    color: #0645ad;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #0b0080;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    color: #faa700;
+}
+
+/* Internal wiki links */
+a[data-page] {
+    color: #0645ad;
+}
+
+a[data-page]:visited {
+    color: #0b0080;
+}
+
+/* Red links — missing pages */
+a.red-link,
+a.red-link:visited {
+    color: #ba0000;
+}
+
+/* External links */
+a.external {
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><path fill="%230645ad" d="M1.5 4.518h5.982V10.5H1.5z"/><path fill="%23fff" d="M2.4 5.418h4.182V9.6H2.4z"/><path fill="%230645ad" d="M4.8 1.5L7.5 4.2 4.95 6.75l-.45-.45L6.15 4.65 4.35 2.85 3 4.2l-.45-.45z"/></svg>') no-repeat right center;
+    padding-right: 13px;
+}
+
+/* ---------- Layout: Sidebar ---------- */
+#mw-panel.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 14em;
+    height: 100vh;
+    background-color: #f6f6f6;
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 100;
+    border-right: 1px solid #a7d7f9;
+    font-size: 1em;
+}
+
+/* Logo area */
+#mw-panel.sidebar .sidebar-logo {
+    display: block;
+    width: 100%;
+    padding: 12px 8px;
+    text-align: center;
+    background-color: #a7d7f9;
+    border-bottom: 1px solid #88b8d8;
+}
+
+#mw-panel.sidebar .sidebar-logo img {
+    max-width: 120px;
+    height: auto;
+}
+
+#mw-panel.sidebar .sidebar-logo .logo-text {
+    display: block;
+    font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+    font-size: 1.3em;
+    color: #202122;
+    margin-top: 4px;
+    font-weight: normal;
+}
+
+#mw-panel.sidebar .sidebar-logo .logo-tagline {
+    display: block;
+    font-size: 0.9em;
+    color: #54595d;
+    font-style: italic;
+}
+
+/* Sidebar navigation sections */
+.sidebar-nav {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.sidebar-nav .portal {
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-nav .portal h3 {
+    font-family: sans-serif, Helvetica, Arial;
+    font-size: 1em;
+    font-weight: normal;
+    color: #54595d;
+    padding: 8px 8px 4px 8px;
+    margin: 0;
+    text-transform: lowercase;
+    cursor: pointer;
+    user-select: none;
+    border-top: 1px solid #ddd;
+    position: relative;
+}
+
+.sidebar-nav .portal h3::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #54595d;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.2s ease;
+}
+
+.sidebar-nav .portal.collapsed h3::after {
+    transform: translateY(-50%) rotate(-90deg);
+}
+
+.sidebar-nav .portal .body {
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav .portal.collapsed .body {
+    display: none;
+}
+
+.sidebar-nav .portal .body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav .portal .body ul li {
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-nav .portal .body ul li a {
+    display: block;
+    padding: 4px 8px 4px 16px;
+    color: #0645ad;
+    font-size: 1em;
+    line-height: 1.5;
+    text-decoration: none;
+    word-wrap: break-word;
+}
+
+.sidebar-nav .portal .body ul li a:hover {
+    background-color: #eaecf0;
+    text-decoration: none;
+}
+
+/* ---------- Search Bar ---------- */
+.search-container {
+    padding: 8px;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 6px 24px 6px 8px;
+    border: 1px solid #a2a9b1;
+    border-radius: 2px;
+    font-size: 1em;
+    font-family: sans-serif, Helvetica, Arial;
+    background-color: #fff;
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: #36c;
+    box-shadow: inset 0 0 0 1px #36c;
+}
+
+/* Magnifying glass icon (CSS only) */
+.search-container::after {
+    content: '';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border: 2px solid #72777d;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.search-container::before {
+    content: '';
+    position: absolute;
+    right: 11px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 2px;
+    height: 6px;
+    background-color: #72777d;
+    margin-top: 5px;
+    pointer-events: none;
+}
+
+/* Search results dropdown */
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 8px;
+    right: 8px;
+    background: #fff;
+    border: 1px solid #a2a9b1;
+    border-top: none;
+    border-radius: 0 0 2px 2px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 200;
+    display: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.search-results.active {
+    display: block;
+}
+
+.search-results a {
+    display: block;
+    padding: 6px 8px;
+    color: #202122;
+    font-size: 0.8125em;
+    text-decoration: none;
+    border-bottom: 1px solid #eaecf0;
+}
+
+.search-results a:hover {
+    background-color: #eaf3ff;
+}
+
+.search-results a .search-result-title {
+    font-weight: bold;
+    color: #0645ad;
+}
+
+.search-results a .search-result-snippet {
+    color: #54595d;
+    font-size: 0.9em;
+}
+
+/* ---------- Layout: Content Area ---------- */
+#content.mw-body {
+    margin-left: 14em;
+    padding: 1.25em 1.5em 1.5em 1.5em;
+    background-color: #ffffff;
+    border-left: 1px solid #a7d7f9;
+    min-height: 100vh;
+    position: relative;
+    z-index: 0;
+}
+
+/* ---------- Page Title ---------- */
+.firstHeading {
+    font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+    font-size: 1.8em;
+    font-weight: normal;
+    line-height: 1.2;
+    color: #000;
+    margin: 0 0 0.25em 0;
+    padding: 0 0 0.15em 0;
+    border-bottom: 1px solid #a2a9b1;
+    overflow: hidden;
+}
+
+/* ---------- Site Subtitle ---------- */
+#siteSub {
+    font-size: 0.8125em;
+    color: #54595d;
+    margin: 0 0 1em 0;
+    font-style: italic;
+}
+
+/* ---------- Headings ---------- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+    font-weight: normal;
+    color: #000;
+    margin-top: 1em;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 1.8em;
+    border-bottom: 1px solid #a2a9b1;
+    padding-bottom: 0.15em;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 1.5em;
+    border-bottom: 1px solid #a2a9b1;
+    padding-bottom: 0.15em;
+    margin-bottom: 0.5em;
+}
+
+h3 {
+    font-size: 1.2em;
+    margin-bottom: 0.3em;
+}
+
+h4 {
+    font-size: 1.1em;
+    margin-bottom: 0.3em;
+}
+
+h5 {
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 0.3em;
+}
+
+h6 {
+    font-size: 1em;
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 0.3em;
+}
+
+.mw-headline {
+    /* Wikipedia uses spans inside headings for anchor links */
+    display: inline;
+}
+
+.mw-editsection {
+    font-family: sans-serif, Helvetica, Arial;
+    font-size: 0.55em;
+    font-weight: normal;
+    margin-left: 1em;
+    vertical-align: baseline;
+    color: #54595d;
+}
+
+.mw-editsection a {
+    color: #0645ad;
+}
+
+/* ---------- Body Text ---------- */
+#content.mw-body p {
+    margin: 0.5em 0;
+    line-height: 1.6;
+}
+
+#content.mw-body ul,
+#content.mw-body ol {
+    margin: 0.3em 0 0.3em 1.6em;
+    padding: 0;
+}
+
+#content.mw-body li {
+    margin-bottom: 0.2em;
+    line-height: 1.6;
+}
+
+/* ---------- Infobox ---------- */
+.infobox {
+    float: right;
+    clear: right;
+    width: 22em;
+    margin: 0 0 1em 1em;
+    border: 1px solid #a2a9b1;
+    border-collapse: collapse;
+    background-color: #f8f9fa;
+    font-size: 0.875em;
+    line-height: 1.5;
+}
+
+.infobox caption,
+.infobox-title {
+    background-color: #ccccff;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+    padding: 6px 8px;
+    font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+}
+
+.infobox-title {
+    background-color: #ccccff;
+    display: table-caption;
+    caption-side: top;
+    border: 1px solid #a2a9b1;
+    border-bottom: none;
+}
+
+.infobox-subtitle {
+    background-color: #ddd;
+    text-align: center;
+    padding: 4px 8px;
+    font-size: 0.9em;
+}
+
+.infobox-image {
+    text-align: center;
+    padding: 8px;
+}
+
+.infobox-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.infobox th,
+.infobox td {
+    border: 1px solid #a2a9b1;
+    padding: 4px 8px;
+    vertical-align: top;
+}
+
+.infobox th {
+    background-color: #e0e0e0;
+    text-align: left;
+    font-weight: normal;
+    width: 35%;
+    color: #202122;
+}
+
+.infobox td {
+    background-color: #f8f9fa;
+}
+
+.infobox tr:nth-child(even) td {
+    background-color: #f0f0f0;
+}
+
+.infobox-header {
+    background-color: #ccccff;
+    text-align: center;
+    font-weight: bold;
+    padding: 4px 8px;
+}
+
+.infobox-below {
+    text-align: center;
+    font-size: 0.9em;
+    padding: 4px 8px;
+    border-top: 1px solid #a2a9b1;
+}
+
+/* ---------- Table of Contents ---------- */
+#toc.toc,
+.toc {
+    display: table;
+    background-color: #f8f9fa;
+    border: 1px solid #a2a9b1;
+    padding: 10px 14px 7px 14px;
+    margin: 0.5em 0 1em 0;
+    font-size: 0.9em;
+}
+
+.toc .toctitle {
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.05em;
+    margin-bottom: 0.4em;
+}
+
+.toc .toctitle h2 {
+    display: inline;
+    font-size: 1em;
+    font-family: sans-serif, Helvetica, Arial;
+    font-weight: bold;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc .toctoggle {
+    font-size: 0.9em;
+    font-weight: normal;
+}
+
+.toc ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.toc > ul {
+    counter-reset: tocnum;
+}
+
+.toc ul ul {
+    margin-left: 1.5em;
+}
+
+.toc li {
+    margin: 0.15em 0;
+    line-height: 1.5;
+}
+
+.toc .tocnumber {
+    color: #202122;
+    margin-right: 0.4em;
+}
+
+.toc .toctext {
+    color: #0645ad;
+}
+
+/* Auto-numbered TOC via CSS counters */
+.toc > ul {
+    counter-reset: toc-section;
+}
+
+.toc > ul > li {
+    counter-increment: toc-section;
+    counter-reset: toc-subsection;
+}
+
+.toc > ul > li > ul > li {
+    counter-increment: toc-subsection;
+    counter-reset: toc-subsubsection;
+}
+
+.toc > ul > li > ul > li > ul > li {
+    counter-increment: toc-subsubsection;
+}
+
+/* ---------- References & Footnotes ---------- */
+sup.reference {
+    font-size: 0.75em;
+    line-height: 0;
+    vertical-align: super;
+}
+
+sup.reference a {
+    color: #0645ad;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+sup.reference a::before {
+    content: '[';
+}
+
+sup.reference a::after {
+    content: ']';
+}
+
+.references {
+    font-size: 0.875em;
+    line-height: 1.6;
+    list-style-type: decimal;
+    margin: 0.3em 0 0.5em 2.5em;
+    padding: 0;
+}
+
+.references li {
+    margin-bottom: 0.3em;
+}
+
+.references li::marker {
+    font-weight: normal;
+}
+
+.reflist {
+    font-size: 0.875em;
+}
+
+.reference-text {
+    margin-left: 0.3em;
+}
+
+/* Backlink arrow */
+.mw-cite-backlink {
+    font-weight: normal;
+}
+
+.mw-cite-backlink a {
+    color: #0645ad;
+}
+
+/* ---------- Categories Bar ---------- */
+#catlinks.catlinks,
+.catlinks {
+    background-color: #f8f9fa;
+    border: 1px solid #a2a9b1;
+    padding: 5px 10px;
+    margin-top: 2em;
+    font-size: 0.8125em;
+    clear: both;
+}
+
+.catlinks .mw-normal-catlinks {
+    display: inline;
+}
+
+.catlinks .mw-normal-catlinks > a {
+    font-weight: bold;
+}
+
+.catlinks ul {
+    display: inline;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.catlinks ul li {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+.catlinks ul li::before {
+    content: ' | ';
+    color: #72777d;
+}
+
+.catlinks ul li:first-child::before {
+    content: ': ';
+}
+
+/* ---------- See Also & What Links Here ---------- */
+#see-also,
+#what-links-here {
+    margin-top: 1em;
+}
+
+#see-also ul,
+#what-links-here ul {
+    margin: 0.3em 0 0.5em 1.6em;
+    padding: 0;
+}
+
+#see-also ul li,
+#what-links-here ul li {
+    margin-bottom: 0.2em;
+}
+
+/* ---------- Return Home Button ---------- */
+#return-home:empty {
+    display: none;
+}
+
+#return-home {
+    margin-top: 1.5em;
+}
+
+#return-home a {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #f8f9fa;
+    border: 1px solid #a2a9b1;
+    border-radius: 2px;
+    color: #0645ad;
+    font-size: 0.875em;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: sans-serif, Helvetica, Arial;
+}
+
+#return-home a:hover {
+    background-color: #eaecf0;
+    border-color: #72777d;
+    text-decoration: none;
+}
+
+/* ---------- Breadcrumb Navigation ---------- */
+#breadcrumb {
+    font-size: 0.85em;
+    color: #54595d;
+    margin-bottom: 0.5em;
+    padding: 0;
+}
+
+#breadcrumb a {
+    color: #0645ad;
+}
+
+#breadcrumb .breadcrumb-sep {
+    margin: 0 0.4em;
+    color: #72777d;
+}
+
+/* ---------- Homepage Main Page ---------- */
+#mp-welcome {
+    text-align: center;
+    border: 1px solid #a7d7f9;
+    background-color: #f2f6ff;
+    padding: 0.8em 1em;
+    margin-bottom: 0.8em;
+}
+
+#mp-welcome .firstHeading {
+    font-size: 1.6em;
+    border-bottom: none;
+    margin-bottom: 0.1em;
+}
+
+#mp-welcome #siteSub {
+    margin: 0;
+    font-size: 1em;
+}
+
+/* Two-column portal grid */
+#mp-portals {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8em;
+}
+
+/* Portal Boxes */
+.mw-portal {
+    border: 1px solid #a2a9b1;
+    background-color: #fff;
+    margin: 0;
+}
+
+.mw-portal h2 {
+    margin: 0;
+    padding: 0.2em 0.5em;
+    font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-bottom: 1px solid #a2a9b1;
+    color: #fff;
+}
+
+/* Color-coded portal headers like Wikipedia's main page */
+.mw-portal:nth-child(1) h2 { background-color: #4b6292; } /* Research — steel blue */
+.mw-portal:nth-child(2) h2 { background-color: #6b4c3b; } /* Professional — brown */
+.mw-portal:nth-child(3) h2 { background-color: #505894; } /* Personal Projects — purple */
+.mw-portal:nth-child(4) h2 { background-color: #466b3b; } /* Skills — green */
+.mw-portal:nth-child(5) h2 { background-color: #6b3b5e; } /* Community — maroon */
+
+.mw-portal ul {
+    list-style: none;
+    margin: 0;
+    padding: 0.5em 0.8em;
+}
+
+.mw-portal li {
+    padding: 0.3em 0;
+    border-bottom: 1px solid #eaecf0;
+    line-height: 1.6;
+}
+
+.mw-portal li:last-child {
+    border-bottom: none;
+}
+
+.mw-portal li a {
+    color: #0645ad;
+    font-weight: bold;
+}
+
+.mw-portal li .portal-desc {
+    color: #54595d;
+    font-weight: normal;
+    font-size: 0.9em;
+}
+
+/* Portal that spans full width (e.g. Community at bottom) */
+.mw-portal-full {
+    grid-column: 1 / -1;
+}
+
+/* Stats bar */
+#mp-stats {
+    text-align: center;
+    margin-top: 1.5em;
+    padding: 0.5em;
+    border-top: 1px solid #a2a9b1;
+    color: #54595d;
+    font-size: 0.85em;
+}
+
+/* ---------- Notice / Message Boxes ---------- */
+.mbox {
+    border: 1px solid #a2a9b1;
+    background-color: #f8f9fa;
+    padding: 8px 12px;
+    margin: 1em 0;
+    font-size: 0.875em;
+}
+
+.mbox-warning {
+    border-color: #fc3;
+    background-color: #fef6e7;
+}
+
+.mbox-info {
+    border-color: #36c;
+    background-color: #eaf3ff;
+}
+
+/* ---------- Images / Thumbnails ---------- */
+.thumb {
+    margin: 0.5em 0 1.3em 1.4em;
+    float: right;
+    clear: right;
+    border: 1px solid #c8ccd1;
+    background-color: #f8f9fa;
+    padding: 3px;
+    width: auto;
+}
+
+.thumb.tleft {
+    float: left;
+    margin: 0.5em 1.4em 1.3em 0;
+}
+
+.thumb .thumbinner {
+    padding: 3px;
+    text-align: center;
+}
+
+.thumb .thumbimage {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #c8ccd1;
+}
+
+.thumb .thumbcaption {
+    font-size: 0.8125em;
+    line-height: 1.4;
+    padding: 3px;
+    text-align: left;
+    color: #54595d;
+}
+
+/* ---------- Blockquote ---------- */
+blockquote {
+    margin: 1em 2em;
+    padding: 0;
+    font-style: italic;
+    color: #202122;
+}
+
+/* ---------- Code / Pre ---------- */
+code, pre {
+    font-family: monospace, monospace;
+    font-size: 0.875em;
+}
+
+pre {
+    background-color: #f8f9fa;
+    border: 1px solid #eaecf0;
+    padding: 1em;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+code {
+    background-color: #f8f9fa;
+    padding: 1px 4px;
+    border-radius: 2px;
+}
+
+/* ---------- Horizontal Rule ---------- */
+hr {
+    border: none;
+    border-top: 1px solid #a2a9b1;
+    margin: 0.5em 0;
+}
+
+/* ---------- Tables (general wiki tables) ---------- */
+.wikitable {
+    border-collapse: collapse;
+    margin: 1em 0;
+    background-color: #f8f9fa;
+    border: 1px solid #a2a9b1;
+}
+
+.wikitable th {
+    background-color: #eaecf0;
+    border: 1px solid #a2a9b1;
+    padding: 4px 8px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.wikitable td {
+    border: 1px solid #a2a9b1;
+    padding: 4px 8px;
+}
+
+/* ---------- Footer ---------- */
+#footer {
+    margin-left: 14em;
+    padding: 12px 16px;
+    border-top: 1px solid #a2a9b1;
+    background-color: #f6f6f6;
+    font-size: 0.75em;
+    color: #72777d;
+    text-align: center;
+}
+
+#footer a {
+    color: #0645ad;
+}
+
+#footer ul {
+    list-style: none;
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+
+#footer ul li {
+    display: inline;
+    margin: 0 8px;
+}
+
+/* ---------- Tabs (page actions) ---------- */
+.mw-tabs {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #a7d7f9;
+    background-color: #fff;
+    font-size: 0.8125em;
+}
+
+.mw-tabs li {
+    margin: 0;
+    padding: 0;
+}
+
+.mw-tabs li a {
+    display: block;
+    padding: 4px 12px;
+    color: #0645ad;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-bottom: none;
+    margin-bottom: -1px;
+}
+
+.mw-tabs li a:hover {
+    background-color: #f8f9fa;
+}
+
+.mw-tabs li.selected a {
+    background-color: #fff;
+    border-color: #a7d7f9;
+    border-bottom-color: #fff;
+    font-weight: bold;
+    color: #202122;
+}
+
+/* ---------- Hamburger Menu (Mobile) ---------- */
+.hamburger-menu {
+    display: none;
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    z-index: 200;
+    background: #fff;
+    border: 1px solid #a2a9b1;
+    border-radius: 2px;
+    padding: 6px 8px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background-color: #202122;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(3px, 3px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* ---------- Responsive: Mobile ---------- */
+@media screen and (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+    }
+
+    #mw-panel.sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        width: 240px;
+        box-shadow: none;
+    }
+
+    #mw-panel.sidebar.open {
+        transform: translateX(0);
+        box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+    }
+
+    #content.mw-body {
+        margin-left: 0;
+        padding: 50px 12px 16px 12px;
+    }
+
+    #footer {
+        margin-left: 0;
+    }
+
+    .infobox {
+        float: none;
+        width: 100%;
+        margin: 0 0 1em 0;
+    }
+
+    #mp-portals {
+        grid-template-columns: 1fr;
+    }
+
+    .thumb {
+        float: none;
+        margin: 0.5em 0;
+        width: auto;
+    }
+
+    .thumb.tleft {
+        float: none;
+        margin: 0.5em 0;
+    }
+}
+
+/* Sidebar overlay for mobile */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 99;
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
+/* ---------- Print Styles ---------- */
+@media print {
+    #mw-panel.sidebar,
+    .hamburger-menu,
+    .sidebar-overlay,
+    .mw-tabs,
+    .mw-editsection,
+    .search-container,
+    #return-home,
+    .toc .toctoggle {
+        display: none !important;
+    }
+
+    #content.mw-body {
+        margin-left: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+    }
+
+    #footer {
+        margin-left: 0 !important;
+    }
+
+    body {
+        background: #fff !important;
+        color: #000 !important;
+        font-size: 12pt;
+    }
+
+    a {
+        color: #000 !important;
+        text-decoration: underline;
+    }
+
+    a[data-page]::after {
+        content: ' (' attr(href) ')';
+        font-size: 0.8em;
+    }
+
+    .infobox {
+        border: 1px solid #000;
+    }
+
+    h1, h2 {
+        border-bottom-color: #000;
+    }
+}
+
+/* ---------- Utility Classes ---------- */
+.clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.plainlist ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.center {
+    text-align: center;
+}
+
+/* Wikipedia-style bold first sentence */
+.mw-parser-output > p:first-of-type b:first-child {
+    font-weight: bold;
+}
+
+/* Hatnotes */
+.hatnote {
+    font-style: italic;
+    padding-left: 1.6em;
+    margin-bottom: 0.5em;
+    color: #54595d;
+    font-size: 0.875em;
+}
+
+/* Disambiguation */
+.dablink {
+    font-style: italic;
+    padding-left: 1.6em;
+    margin-bottom: 0.5em;
+    font-size: 0.875em;
+}
+
+/* Ambox (article message box) */
+.ambox {
+    border: 1px solid #a2a9b1;
+    background-color: #fbfbfb;
+    margin: 0.5em 0;
+    padding: 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.ambox td {
+    padding: 4px 8px;
+}
+
+.ambox .mbox-image {
+    width: 40px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.ambox .mbox-text {
+    font-size: 0.875em;
+}
+
+/* ---------- Scrollbar (WebKit) ---------- */
+#mw-panel.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+#mw-panel.sidebar::-webkit-scrollbar-thumb {
+    background-color: #c8ccd1;
+    border-radius: 3px;
+}
+
+#mw-panel.sidebar::-webkit-scrollbar-track {
+    background-color: transparent;
+}

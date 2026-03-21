@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="globeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8e8e8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c0c0c0;stop-opacity:1" />
+    </linearGradient>
+    <clipPath id="globeClip">
+      <circle cx="100" cy="90" r="70" />
+    </clipPath>
+  </defs>
+
+  <!-- Globe base -->
+  <circle cx="100" cy="90" r="72" fill="#a7d7f9" opacity="0.3" />
+  <circle cx="100" cy="90" r="70" fill="url(#globeGrad)" stroke="#999" stroke-width="1.5" />
+
+  <!-- Puzzle piece grid lines (longitude) -->
+  <g clip-path="url(#globeClip)" stroke="#999" stroke-width="0.8" fill="none" opacity="0.5">
+    <ellipse cx="100" cy="90" rx="70" ry="70" />
+    <ellipse cx="100" cy="90" rx="50" ry="70" />
+    <ellipse cx="100" cy="90" rx="25" ry="70" />
+    <ellipse cx="100" cy="90" rx="5" ry="70" />
+    <!-- Latitude lines -->
+    <line x1="30" y1="60" x2="170" y2="60" />
+    <line x1="30" y1="90" x2="170" y2="90" />
+    <line x1="30" y1="120" x2="170" y2="120" />
+  </g>
+
+  <!-- Puzzle piece jigsaw effect -->
+  <g clip-path="url(#globeClip)" fill="none" stroke="#666" stroke-width="1.2" opacity="0.4">
+    <!-- Vertical puzzle cuts -->
+    <path d="M70,20 L70,55 C65,58 65,62 70,65 L70,90 C75,93 75,97 70,100 L70,160" />
+    <path d="M130,20 L130,55 C135,58 135,62 130,65 L130,90 C125,93 125,97 130,100 L130,160" />
+    <!-- Horizontal puzzle cuts -->
+    <path d="M30,60 L65,60 C68,55 72,55 75,60 L125,60 C128,65 132,65 135,60 L170,60" />
+    <path d="M30,120 L65,120 C68,115 72,115 75,120 L125,120 C128,125 132,125 135,120 L170,120" />
+  </g>
+
+  <!-- "SP" letters on globe -->
+  <text x="78" y="100" font-family="Linux Libertine, Georgia, Times, serif" font-size="42" font-weight="bold" fill="#333" opacity="0.85">S</text>
+  <text x="108" y="100" font-family="Linux Libertine, Georgia, Times, serif" font-size="42" font-weight="bold" fill="#333" opacity="0.85">P</text>
+
+  <!-- Missing puzzle piece (top-right, Wikipedia style) -->
+  <g clip-path="url(#globeClip)">
+    <path d="M130,20 L170,20 L170,60 L135,60 C132,65 128,65 125,60 L130,60 L130,55 C135,58 135,62 130,65 L130,20 Z" fill="#f6f6f6" stroke="#999" stroke-width="0.8" opacity="0.7" />
+  </g>
+
+  <!-- Globe shadow/3D effect -->
+  <circle cx="100" cy="90" r="70" fill="none" stroke="#888" stroke-width="1" opacity="0.3" />
+  <ellipse cx="100" cy="163" rx="50" ry="5" fill="#000" opacity="0.08" />
+
+  <!-- Title text -->
+  <text x="100" y="185" text-anchor="middle" font-family="Linux Libertine, Georgia, Times, serif" font-size="16" fill="#333" letter-spacing="1">SHALI PEDIA</text>
+  <text x="100" y="198" text-anchor="middle" font-family="sans-serif, Helvetica, Arial" font-size="8" fill="#72777d">The Free Portfolio</text>
+</svg>

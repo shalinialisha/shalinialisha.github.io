@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHALIpedia — The Personal Encyclopedia</title>
+  <link rel="stylesheet" href="css/wikipedia.css">
+  <style>
+    #mp-welcome { border-bottom: 1px solid #a2a9b1; margin-bottom: 1em; padding-bottom: 0.5em; }
+    #mp-welcome h1 { border-bottom: none; font-size: 2em; margin-bottom: 0.1em; }
+    #siteSub { color: #54595d; font-size: 0.92em; margin-bottom: 0.5em; }
+    #mp-portals { display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin-top: 1em; }
+    .mw-portal { background: #f8f9fa; border: 1px solid #a2a9b1; padding: 0.75em 1em; break-inside: avoid; }
+    .mw-portal h2 { font-size: 1em; background: #cee0f2; margin: -0.75em -1em 0.6em -1em; padding: 0.4em 1em; font-family: 'Linux Libertine', Georgia, serif; border-bottom: 1px solid #a2a9b1; }
+    .mw-portal ul { list-style: none; padding: 0; margin: 0; }
+    .mw-portal ul li { padding: 0.2em 0; border-bottom: 1px dotted #c8ccd1; font-size: 0.9em; }
+    .mw-portal ul li:last-child { border-bottom: none; }
+    .mw-portal ul li a { font-weight: bold; }
+    .portal-desc { color: #54595d; font-weight: normal; font-size: 0.95em; }
+    .mw-portal-full { grid-column: 1 / -1; }
+    #mp-intro { grid-column: 1 / -1; background: #eaf3fb; border: 1px solid #a2a9b1; padding: 0.8em 1em; font-size: 0.95em; line-height: 1.7; }
+    #mp-intro p { margin: 0; }
+    #mp-didyouknow { background: #f8f9fa; border: 1px solid #a2a9b1; padding: 0.75em 1em; }
+    #mp-didyouknow h2 { font-size: 1em; background: #cee0f2; margin: -0.75em -1em 0.6em -1em; padding: 0.4em 1em; font-family: 'Linux Libertine', Georgia, serif; }
+    #mp-didyouknow ul { margin: 0; padding-left: 1.5em; font-size: 0.9em; }
+    #mp-didyouknow ul li { padding: 0.25em 0; }
+    #mp-stats { grid-column: 1 / -1; text-align: center; color: #54595d; font-size: 0.85em; padding: 0.5em; border-top: 1px solid #a2a9b1; margin-top: 0.5em; }
+  </style>
+</head>
+<body>
+  <div id="mw-panel" class="sidebar"></div>
+  <div id="content" class="mw-body">
+    <div id="mp-welcome">
+      <h1 id="firstHeading" class="firstHeading">Welcome to <span style="font-variant: small-caps;">SHALIpedia</span></h1>
+      <div id="siteSub">the personal encyclopedia — exploring the work, research, and ideas of Shalini Thinakaran</div>
+    </div>
+    <div id="mp-portals">
+      <div id="mp-intro">
+        <p><b>SHALIpedia</b> is a Wikipedia-style personal portfolio encyclopedia documenting the research, projects, professional experience, skills, and ideas of <b>Shalini Thinakaran</b> — software engineer, researcher, and community builder. Navigate through interconnected pages just like Wikipedia: blue links lead to pages within this encyclopedia, while <a class="external" href="https://en.wikipedia.org">external links</a> lead to outside resources. Use the search bar or browse by category below.</p>
+      </div>
+      <div id="mp-stats"></div>
+    </div>
+  </div>
+
+  <script src="js/registry.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/search.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var container = document.getElementById('mp-portals');
+      var statsEl = document.getElementById('mp-stats');
+      var grouped = SHALIpedia.getHomepagePages();
+      var descs = {
+        'ultimate-consequences': 'Analyzed 1,000+ conflict deaths in Bolivia (R, Crosstalk) for human rights policy reform.',
+        'prism-lab': 'Mixed-methods analysis of Latinx STEM student outcomes — surveys, qualitative coding, visualizations.',
+        'future-of-free-speech': 'Streamlit + Hugging Face app generating real-time counter-narratives to hate speech. Presented at OpenAI & Microsoft.',
+        'abc-musicians': 'Connected hundreds of Nashville musicians to financial resources; R visualizations for government funding.',
+        'executive-orders-simplified': 'Automated pipeline scraping all US presidential actions into SQL; LLM-powered plain-language query interface.',
+        'ai-for-all': 'Fine-tuned GPT-2 on equity scholarship; 2nd place, Vanderbilt DSI AI Symposium.',
+        'twitter-hate-speech-detector': 'BERT + PyTorch — 82% validation accuracy detecting hate speech across 10,000+ tweets.',
+        'adobe-employee': 'Software Engineer at Frame.io (Adobe) — co-architected CLI and MCP server; self-automating Zapier framework.',
+        'adobe-intern': 'Modernized Premiere Pro Timeline UI in C++; presented at Adobe MAX 2024.',
+        'grader-for-python': 'Supported 200+ students in Python fundamentals at Vanderbilt (2022–2025).',
+        'technical-skills': 'Python, C++, Elixir, R, BERT/PyTorch, NLP, generative AI, OpenAPI, Figma, and more.',
+        'fellowships-and-awards': '2025 Focus Scholar (Georgia Tech), FLAS Fellow, Dean\'s List, AnitaB.org Finalist, Grace Hopper Scholar.',
+        'leadership-and-affiliations': 'Founded ColorStack Vanderbilt and Latinx & Queer Affinity Group; MLT Career Prep Fellow.',
+        'research-interests': '"Deradicalizing algorithms" — recommendation systems that refuse to exploit users. Algorithmic fairness and AI ethics.',
+        'community-involvement': 'Community-building in STEM equity spaces at Vanderbilt and Adobe.'
+      };
+      var dyk = [
+        '...that Shalini founded the <b>ColorStack Vanderbilt chapter</b>, connecting students of color in computing?',
+        '...that the <a href="pages/research-experience/ultimate-consequences.html">Ultimate Consequences Project</a> analyzed over 1,000 conflict-related deaths in Bolivia?',
+        '...that Shalini co-built the entire <b>Frame.io CLI and MCP server</b> as one of three engineers in about a month?',
+        '...that her research concept of <b>"deradicalizing algorithms"</b> aims to prevent recommendation systems from exploiting user vulnerabilities for engagement?',
+        '...that <a href="pages/personal-projects/ai-for-all.html">AI for All</a> won 2nd place at the Vanderbilt DSI AI Symposium in 2023?'
+      ];
+      var order = ['Professional Experience','Research Experience','Personal Projects','Skills & Qualifications','Community'];
+      order.forEach(function(cat, idx) {
+        var pages = grouped[cat];
+        if (!pages || !pages.length) return;
+        var portal = document.createElement('div');
+        portal.className = 'mw-portal' + (cat === 'Community' ? ' mw-portal-full' : '');
+        var h2 = document.createElement('h2');
+        h2.textContent = cat;
+        portal.appendChild(h2);
+        var ul = document.createElement('ul');
+        pages.forEach(function(p) {
+          var li = document.createElement('li');
+          li.innerHTML = '<a href="' + p.path + '">' + p.title + '</a>' +
+            (descs[p.id] ? '<span class="portal-desc"> — ' + descs[p.id] + '</span>' : '');
+          ul.appendChild(li);
+        });
+        portal.appendChild(ul);
+        container.insertBefore(portal, statsEl);
+        if (cat === 'Professional Experience') {
+          var dykEl = document.createElement('div');
+          dykEl.id = 'mp-didyouknow';
+          dykEl.innerHTML = '<h2>Did you know?</h2><ul>' + dyk.map(function(d){return '<li>'+d+'</li>';}).join('') + '</ul>';
+          container.insertBefore(dykEl, statsEl);
+        }
+      });
+      statsEl.textContent = 'SHALIpedia contains ' + SHALIpedia.getAllPageIds().length + ' articles across ' + SHALIpedia.getCategories().length + ' categories.';
+    });
+  </script>
+</body>
+</html>
