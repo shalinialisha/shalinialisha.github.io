@@ -1,58 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Twitter Hate Speech Detector - Shali Pedia</title>
+<html lang="en"><head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twitter Hate Speech Detector — SHALIpedia</title>
   <link rel="stylesheet" href="../../css/wikipedia.css">
 </head>
 <body data-page-id="twitter-hate-speech-detector">
   <div id="mw-panel" class="sidebar"></div>
   <div id="content" class="mw-body">
     <h1 id="firstHeading" class="firstHeading">Twitter Hate Speech Detector</h1>
-    <div id="siteSub">From Shali Pedia, the personal encyclopedia</div>
+    <div id="siteSub">From SHALIpedia, the personal encyclopedia</div>
 
-    <!-- INFOBOX: Edit your project details here -->
     <table class="infobox">
       <caption class="infobox-title">Twitter Hate Speech Detector</caption>
       <tbody>
-        <tr><th>Type</th><td><!-- e.g., Personal Project --></td></tr>
-        <tr><th>Duration</th><td><!-- e.g., 2023–2024 --></td></tr>
-        <tr><th>Affiliation</th><td><!-- e.g., Independent --></td></tr>
-        <tr><th>Skills Used</th><td><!-- e.g., Python, React --></td></tr>
-        <tr><th>Status</th><td><!-- e.g., Active --></td></tr>
+        <tr><th>Type</th><td>Independent Research / ML Classifier</td></tr>
+        <tr><th>Duration</th><td>June 2023 – August 2023</td></tr>
+        <tr><th>Architecture</th><td><a class="external" href="https://en.wikipedia.org/wiki/BERT_(language_model)">BERT</a> (Hugging Face pretrained)</td></tr>
+        <tr><th>Framework</th><td><a class="external" href="https://en.wikipedia.org/wiki/PyTorch">PyTorch</a></td></tr>
+        <tr><th>Dataset Size</th><td>10,000+ tweets</td></tr>
+        <tr><th>Validation Accuracy</th><td><b>82%</b></td></tr>
+        <tr><th>Target Classes</th><td>Racist and sexist content</td></tr>
+        <tr><th>Status</th><td>In progress — expanding classes, deploying to production</td></tr>
       </tbody>
     </table>
 
-    <p class="overview"><!-- Your introduction goes here --></p>
+    <p class="overview">
+      The <b>Twitter Hate Speech Detector</b> is an independent NLP research project that applies a fine-tuned <a class="external" href="https://en.wikipedia.org/wiki/BERT_(language_model)">BERT</a> model to classify hate speech in social media posts. Using <a class="external" href="https://en.wikipedia.org/wiki/PyTorch">PyTorch</a> and Hugging Face's pretrained BERT architecture, the model attains <b>82% validation accuracy</b> across a dataset of over 10,000 tweets, targeting racist and sexist content. The project connects directly to Shalini's broader interest in using NLP to counter online harm, related to the <a href="../../pages/research-experience/future-of-free-speech.html" data-page="future-of-free-speech">Future of Free Speech Project</a> and her <a href="../../pages/technical-skills.html" data-page="technical-skills">technical skills</a> in machine learning.
+    </p>
+
     <div id="toc" class="toc"></div>
 
-    <h2><span class="mw-headline" id="Background">Background</span></h2>
-    <p><!-- Write background here --></p>
+    <h2><span class="mw-headline" id="Motivation">Motivation</span></h2>
+    <p>Hate speech detection is a foundational problem in content moderation. Unlike rule-based filters, ML classifiers can generalize to novel phrasings and detect intent from context. This project was motivated by the same questions driving the <a href="../../pages/research-experience/future-of-free-speech.html" data-page="future-of-free-speech">Future of Free Speech Project</a> — how can computational tools help reduce harm online, and what are the limits of automated moderation?</p>
 
-    <h2><span class="mw-headline" id="Methodology">Methodology</span></h2>
-    <p><!-- Write methodology here --></p>
+    <h2><span class="mw-headline" id="Architecture">Model Architecture</span></h2>
+    <p>The model uses <a class="external" href="https://en.wikipedia.org/wiki/Hugging_Face">Hugging Face</a>'s pretrained <a class="external" href="https://en.wikipedia.org/wiki/BERT_(language_model)">BERT</a> (Bidirectional Encoder Representations from Transformers) as a base, fine-tuned on a labeled Twitter dataset for binary classification of hate speech. BERT's bidirectional attention mechanism makes it well-suited for understanding tweet context, slang, and implicit hostility that simpler bag-of-words approaches miss.</p>
+
+    <h3><span class="mw-headline" id="Fine_Tuning">Fine-Tuning Approach</span></h3>
+    <p><!-- Describe the fine-tuning process: learning rate, epochs, batch size, any layer freezing, classifier head design --></p>
+
+    <h3><span class="mw-headline" id="Preprocessing">Text Preprocessing Pipeline</span></h3>
+    <p><!-- Describe the preprocessing: tokenization with BERT tokenizer, handling of URLs/mentions/hashtags, truncation strategy --></p>
+
+    <h2><span class="mw-headline" id="Dataset">Dataset</span></h2>
+    <p>The training dataset consists of over 10,000 labeled tweets, balanced across racist, sexist, and neutral classes. Data collection, management, and structuring were done with custom preprocessing pipelines for text classification tasks.</p>
+
+    <h3><span class="mw-headline" id="Data_Validation">Data Validation</span></h3>
+    <p>The project applied rigorous validation methods including <a class="external" href="https://en.wikipedia.org/wiki/Cross-validation_(statistics)">cross-validation</a>, bias detection across demographic subgroups, and dataset quality assessment to ensure model reliability. A key concern was whether the classifier unfairly flagged language used by the very communities it aimed to protect — a problem well-documented in hate speech detection literature.</p>
 
     <h2><span class="mw-headline" id="Results">Results</span></h2>
-    <p><!-- Write results here --></p>
+    <p>The model achieved <b>82% validation accuracy</b> on the held-out test set. <!-- Add precision/recall/F1 breakdown if available. Discuss which error types (false positives vs false negatives) matter most and why. --></p>
 
-    <h2><span class="mw-headline" id="Impact">Impact</span></h2>
-    <p><!-- Write impact here --></p>
+    <h2><span class="mw-headline" id="Limitations_and_Open_Problems">Limitations and Open Problems</span></h2>
+    <p>Binary classification into "hate speech / not hate speech" misses the nuance of real online abuse: irony, reclaimed language, context-dependent slurs, and coordinated harassment that is individually benign. Current work focuses on expanding the target classes of abuse beyond racist and sexist content and deploying the full pipeline to production.</p>
+
+    <h2><span class="mw-headline" id="Open_Source">Open Source Contributions</span></h2>
+    <p>Portions of the model training framework are being published to <a class="external" href="https://github.com/shalinialisha">GitHub</a> to contribute to the open-source NLP community. <!-- Describe what specifically is being released and why --></p>
 
     <div id="see-also"></div>
     <div id="what-links-here"></div>
 
     <h2><span class="mw-headline" id="References">References</span></h2>
     <ol class="references">
-      <!-- <li id="ref-1"><a href="URL">Source Title</a>. Description.</li> -->
+      <li id="ref-1"><a href="https://en.wikipedia.org/wiki/BERT_(language_model)" class="external">BERT — Wikipedia</a>. Bidirectional Encoder Representations from Transformers.</li>
+      <li id="ref-2"><a href="https://en.wikipedia.org/wiki/Hate_speech_detection" class="external">Hate speech detection — Wikipedia</a>.</li>
+      <li id="ref-3"><a href="https://huggingface.co" class="external">Hugging Face</a>. Open-source NLP model hub.</li>
     </ol>
 
     <div id="catlinks" class="catlinks"></div>
     <div id="return-home"></div>
   </div>
-
   <script src="../../js/registry.js"></script>
   <script src="../../js/engine.js"></script>
   <script src="../../js/search.js"></script>
-</body>
-</html>
+</body></html>
