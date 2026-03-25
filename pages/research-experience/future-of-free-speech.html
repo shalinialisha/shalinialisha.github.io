@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Future of Free Speech Project — SHALIpedia</title>
+  <link rel="stylesheet" href="../../css/wikipedia.css">
+</head>
+<body data-page-id="future-of-free-speech">
+  <div id="mw-panel" class="sidebar"></div>
+  <div id="content" class="mw-body">
+    <h1 id="firstHeading" class="firstHeading">Future of Free Speech Project</h1>
+    <div id="siteSub">From SHALIpedia, the personal encyclopedia</div>
+
+    <table class="infobox">
+      <caption class="infobox-title">Future of Free Speech Project — Freequalizer</caption>
+      <tbody>
+        <tr><th>Type</th><td>Research — NLP / Hate Speech Countermeasures</td></tr>
+        <tr><th>Tools</th><td>Hugging Face, Python</td></tr>
+        <tr><th>Live App</th><td><a class="external" href="https://huggingface.co/spaces/vanderbilt-dsi/free-speech-app">Freequalizer on Hugging Face Spaces</a></td></tr>
+        <tr><th>Presented At</th><td>OpenAI, Microsoft; Vanderbilt DSI AI Symposium (Finalist)</td></tr>
+      </tbody>
+    </table>
+
+    <p class="overview">
+      The Future of Free Speech Project produced <b>Freequalizer</b> — a Hugging Face Spaces application that generates real-time counter-narratives to hate speech, written in the voice of historical figures or in configurable emotional registers. The project was presented at OpenAI and Microsoft and was a finalist at the Vanderbilt DSI AI Symposium in 2023. See also <a href="../../pages/technical-skills.html" data-page="technical-skills">Technical Skills</a>.
+    </p>
+
+    <div id="toc" class="toc"></div>
+
+    <h2><span class="mw-headline" id="The_Freequalizer">The Freequalizer</span></h2>
+    <p>The core output of the project is the <a class="external" href="https://huggingface.co/spaces/vanderbilt-dsi/free-speech-app">Freequalizer</a>, a live application hosted on Hugging Face Spaces. Given a piece of hate speech as input, the application generates counter-narratives — not by removing or flagging content, but by producing substantive rhetorical responses designed to undermine the original statement's premise and reframe the conversation.</p>
+    <p>The application offers multiple response modes. Responses can be generated in the synthesized voice of historical figures like Frederick Douglass or Jane Austen, or in configurable emotional registers including loving and compassionate responses, or cutting and sarcastic ones. This flexibility reflects the research insight that effective counter-speech is not one-size-fits-all — different contexts and audiences call for different rhetorical approaches.</p>
+
+    <h2><span class="mw-headline" id="Technical_Implementation">Technical Implementation</span></h2>
+    <p>The application is built on <a class="external" href="https://en.wikipedia.org/wiki/Hugging_Face">Hugging Face</a> language models and hosted on Hugging Face Spaces. Writing samples from historical figures were used to condition the model's output — synthesized excerpts from Frederick Douglass and Jane Austen were provided as style references, and the model generates responses consistent with those voices while addressing the specific hate speech input.</p>
+    <p>The generation pipeline uses <a class="external" href="https://en.wikipedia.org/wiki/Natural_language_processing">NLP</a> techniques including prompt engineering and persona conditioning. Because generation involves a full language model inference pass, the application takes several minutes to produce responses — with streaming identified as a target improvement for future versions.</p>
+
+    <h2><span class="mw-headline" id="Counter_Narrative_Design">Counter-Narrative Design</span></h2>
+    <p>The project's approach to counter-speech is grounded in research on what makes counter-narratives effective. Rather than producing generic affirmations, the generated responses engage directly with the claims in the hate speech — challenging false dichotomies, naming misinformation as such, and asserting the dignity of targeted communities in concrete terms.</p>
+    <p>In a documented example response to an antisemitic post, the Frederick Douglass persona addresses the specific conspiratorial claim, identifies it as a harmful stereotype and false dichotomy, and redirects toward the shared humanity of all people. The Jane Austen persona achieves the same rhetorical end in a more formal register. Both illustrate the application's capacity to generate contextually grounded responses rather than boilerplate.</p>
+
+    <h2><span class="mw-headline" id="Presentations">Presentations</span></h2>
+    <p>The Freequalizer was presented at <a class="external" href="https://openai.com">OpenAI</a> and <a class="external" href="https://microsoft.com">Microsoft</a>, and was selected as a finalist at the Vanderbilt Data Science Institute AI Symposium in 2023. See <a href="../../pages/fellowships-and-awards.html" data-page="fellowships-and-awards">Fellowships and Awards</a> for the full presentations record.</p>
+
+    <h2><span class="mw-headline" id="Connection_to_Research_Interests">Connection to Research Interests</span></h2>
+    <p>This project sits at the intersection of Shalini's interests in NLP, platform moderation, and the social consequences of algorithmic systems. The question it pursues — can algorithms be designed to actively reduce harm rather than merely suppress or amplify content? — is closely related to her broader <a href="../../pages/research-interests.html" data-page="research-interests">research interests</a> in deradicalizing algorithms and algorithmic fairness.</p>
+
+    <div id="see-also"></div>
+    <div id="what-links-here"></div>
+
+    <h2><span class="mw-headline" id="References">References</span></h2>
+    <ol class="references">
+      <li id="ref-1"><a href="https://en.wikipedia.org/wiki/Streamlit" class="external">Streamlit — Wikipedia</a>.</li>
+      <li id="ref-2"><a href="https://en.wikipedia.org/wiki/Hugging_Face" class="external">Hugging Face — Wikipedia</a>.</li>
+      <li id="ref-3"><a href="https://en.wikipedia.org/wiki/Natural_language_processing" class="external">Natural Language Processing — Wikipedia</a>.</li>
+    </ol>
+
+    <div id="catlinks" class="catlinks"></div>
+    <div id="return-home"></div>
+  </div>
+  <script src="../../js/registry.js"></script>
+  <script src="../../js/engine.js"></script>
+  <script src="../../js/search.js"></script>
+</body></html>

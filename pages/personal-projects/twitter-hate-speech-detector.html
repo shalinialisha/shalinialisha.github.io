@@ -13,58 +13,45 @@
     <table class="infobox">
       <caption class="infobox-title">Twitter Hate Speech Detector</caption>
       <tbody>
-        <tr><th>Type</th><td>Independent Research / ML Classifier</td></tr>
-        <tr><th>Duration</th><td>June 2023 – August 2023</td></tr>
-        <tr><th>Architecture</th><td><a class="external" href="https://en.wikipedia.org/wiki/BERT_(language_model)">BERT</a> (Hugging Face pretrained)</td></tr>
-        <tr><th>Framework</th><td><a class="external" href="https://en.wikipedia.org/wiki/PyTorch">PyTorch</a></td></tr>
-        <tr><th>Dataset Size</th><td>10,000+ tweets</td></tr>
-        <tr><th>Validation Accuracy</th><td><b>82%</b></td></tr>
-        <tr><th>Target Classes</th><td>Racist and sexist content</td></tr>
-        <tr><th>Status</th><td>In progress — expanding classes, deploying to production</td></tr>
+        <tr><th>Type</th><td>Personal Project — NLP / Classification</td></tr>
+        <tr><th>Model</th><td>BERT (fine-tuned)</td></tr>
+        <tr><th>Framework</th><td>PyTorch</td></tr>
+        <tr><th>Dataset</th><td>10,000+ tweets</td></tr>
+        <tr><th>Validation Accuracy</th><td>82%</td></tr>
+        <tr><th>Model on Hugging Face</th><td><a class="external" href="https://huggingface.co/shalinialisha/bert-racist-tweets">shalinialisha/bert-racist-tweets</a></td></tr>
       </tbody>
     </table>
 
     <p class="overview">
-      The <b>Twitter Hate Speech Detector</b> is an independent NLP research project that applies a fine-tuned <a class="external" href="https://en.wikipedia.org/wiki/BERT_(language_model)">BERT</a> model to classify hate speech in social media posts. Using <a class="external" href="https://en.wikipedia.org/wiki/PyTorch">PyTorch</a> and Hugging Face's pretrained BERT architecture, the model attains <b>82% validation accuracy</b> across a dataset of over 10,000 tweets, targeting racist and sexist content. The project connects directly to Shalini's broader interest in using NLP to counter online harm, related to the <a href="../../pages/research-experience/future-of-free-speech.html" data-page="future-of-free-speech">Future of Free Speech Project</a> and her <a href="../../pages/technical-skills.html" data-page="technical-skills">technical skills</a> in machine learning.
+      The Twitter Hate Speech Detector is a fine-tuned BERT model trained to classify racist and hateful tweets, achieving 82% validation accuracy across a dataset of over 10,000 tweets. The model was built in PyTorch and is published on Hugging Face at <a class="external" href="https://huggingface.co/shalinialisha/bert-racist-tweets">shalinialisha/bert-racist-tweets</a>. See also <a href="../../pages/technical-skills.html" data-page="technical-skills">Technical Skills</a>.
     </p>
 
     <div id="toc" class="toc"></div>
 
     <h2><span class="mw-headline" id="Motivation">Motivation</span></h2>
-    <p>Hate speech detection is a foundational problem in content moderation. Unlike rule-based filters, ML classifiers can generalize to novel phrasings and detect intent from context. This project was motivated by the same questions driving the <a href="../../pages/research-experience/future-of-free-speech.html" data-page="future-of-free-speech">Future of Free Speech Project</a> — how can computational tools help reduce harm online, and what are the limits of automated moderation?</p>
+    <p>Automated hate speech detection is an active area of NLP research with direct implications for platform safety and content moderation. This project was built to develop hands-on experience with transformer-based classification and to explore the practical challenges of building a reliable hate speech classifier — including dataset imbalance, label ambiguity, and the limitations of accuracy as a sole evaluation metric.</p>
 
-    <h2><span class="mw-headline" id="Architecture">Model Architecture</span></h2>
-    <p>The model uses <a class="external" href="https://en.wikipedia.org/wiki/Hugging_Face">Hugging Face</a>'s pretrained <a class="external" href="https://en.wikipedia.org/wiki/BERT_(language_model)">BERT</a> (Bidirectional Encoder Representations from Transformers) as a base, fine-tuned on a labeled Twitter dataset for binary classification of hate speech. BERT's bidirectional attention mechanism makes it well-suited for understanding tweet context, slang, and implicit hostility that simpler bag-of-words approaches miss.</p>
-
-    <h3><span class="mw-headline" id="Fine_Tuning">Fine-Tuning Approach</span></h3>
-    <p><!-- Describe the fine-tuning process: learning rate, epochs, batch size, any layer freezing, classifier head design --></p>
-
-    <h3><span class="mw-headline" id="Preprocessing">Text Preprocessing Pipeline</span></h3>
-    <p><!-- Describe the preprocessing: tokenization with BERT tokenizer, handling of URLs/mentions/hashtags, truncation strategy --></p>
+    <h2><span class="mw-headline" id="Model_and_Training">Model and Training</span></h2>
+    <p>The detector fine-tunes <a class="external" href="https://en.wikipedia.org/wiki/BERT_(language_model)">BERT</a> (Bidirectional Encoder Representations from Transformers) on a labeled dataset of tweets. BERT's pre-training on large text corpora gives it strong contextual representations of language, which fine-tuning adapts to the specific task of hate speech classification. The training pipeline was built in <a class="external" href="https://en.wikipedia.org/wiki/PyTorch">PyTorch</a>.</p>
+    <p>The model achieved 82% validation accuracy across a dataset of more than 10,000 tweets. Cross-validation was used to ensure the accuracy estimate was robust and not dependent on a particular train/test split.</p>
 
     <h2><span class="mw-headline" id="Dataset">Dataset</span></h2>
-    <p>The training dataset consists of over 10,000 labeled tweets, balanced across racist, sexist, and neutral classes. Data collection, management, and structuring were done with custom preprocessing pipelines for text classification tasks.</p>
+    <p>The model was trained on a dataset of over 10,000 tweets labeled for hate speech content, with a focus on racist language. Dataset curation involved cleaning raw tweet data, handling class imbalance, and applying consistent labeling criteria — standard challenges in content moderation research datasets.</p>
 
-    <h3><span class="mw-headline" id="Data_Validation">Data Validation</span></h3>
-    <p>The project applied rigorous validation methods including <a class="external" href="https://en.wikipedia.org/wiki/Cross-validation_(statistics)">cross-validation</a>, bias detection across demographic subgroups, and dataset quality assessment to ensure model reliability. A key concern was whether the classifier unfairly flagged language used by the very communities it aimed to protect — a problem well-documented in hate speech detection literature.</p>
+    <h2><span class="mw-headline" id="Published_Model">Published Model</span></h2>
+    <p>The fine-tuned model is published on Hugging Face at <a class="external" href="https://huggingface.co/shalinialisha/bert-racist-tweets">shalinialisha/bert-racist-tweets</a>, making it available for inspection, download, and further research. Publishing the model reflects a commitment to open, reproducible work in a domain where transparency about model behavior matters.</p>
 
-    <h2><span class="mw-headline" id="Results">Results</span></h2>
-    <p>The model achieved <b>82% validation accuracy</b> on the held-out test set. <!-- Add precision/recall/F1 breakdown if available. Discuss which error types (false positives vs false negatives) matter most and why. --></p>
-
-    <h2><span class="mw-headline" id="Limitations_and_Open_Problems">Limitations and Open Problems</span></h2>
-    <p>Binary classification into "hate speech / not hate speech" misses the nuance of real online abuse: irony, reclaimed language, context-dependent slurs, and coordinated harassment that is individually benign. Current work focuses on expanding the target classes of abuse beyond racist and sexist content and deploying the full pipeline to production.</p>
-
-    <h2><span class="mw-headline" id="Open_Source">Open Source Contributions</span></h2>
-    <p>Portions of the model training framework are being published to <a class="external" href="https://github.com/shalinialisha">GitHub</a> to contribute to the open-source NLP community. <!-- Describe what specifically is being released and why --></p>
+    <h2><span class="mw-headline" id="Limitations">Limitations and Considerations</span></h2>
+    <p>Like all hate speech classifiers, this model has limitations. Accuracy on a held-out test set does not fully capture real-world performance — context, irony, reclaimed language, and evolving slang can all challenge classifiers trained on static datasets. The model is a research artifact, not a production moderation system, and the project was undertaken in part to build understanding of exactly these limitations.</p>
 
     <div id="see-also"></div>
     <div id="what-links-here"></div>
 
     <h2><span class="mw-headline" id="References">References</span></h2>
     <ol class="references">
-      <li id="ref-1"><a href="https://en.wikipedia.org/wiki/BERT_(language_model)" class="external">BERT — Wikipedia</a>. Bidirectional Encoder Representations from Transformers.</li>
-      <li id="ref-2"><a href="https://en.wikipedia.org/wiki/Hate_speech_detection" class="external">Hate speech detection — Wikipedia</a>.</li>
-      <li id="ref-3"><a href="https://huggingface.co" class="external">Hugging Face</a>. Open-source NLP model hub.</li>
+      <li id="ref-1"><a href="https://huggingface.co/shalinialisha/bert-racist-tweets" class="external">shalinialisha/bert-racist-tweets — Hugging Face</a>.</li>
+      <li id="ref-2"><a href="https://en.wikipedia.org/wiki/BERT_(language_model)" class="external">BERT — Wikipedia</a>.</li>
+      <li id="ref-3"><a href="https://en.wikipedia.org/wiki/PyTorch" class="external">PyTorch — Wikipedia</a>.</li>
     </ol>
 
     <div id="catlinks" class="catlinks"></div>

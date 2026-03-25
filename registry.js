@@ -41,15 +41,6 @@ const SHALIpedia = {
         linksTo: [],
         infobox: { type: "project", fields: {} }
       },
-      "executive-orders-simplified": {
-        title: "Executive Orders Simplified",
-        path: "pages/personal-projects/executive-orders-simplified.html",
-        category: "Personal Projects",
-        showOnHomepage: true,
-        description: "",
-        linksTo: ["political-science", "technical-skills"],
-        infobox: { type: "project", fields: {} }
-      },
       "ai-for-all": {
         title: "AI for All",
         path: "pages/personal-projects/ai-for-all.html",
@@ -160,10 +151,6 @@ const SHALIpedia = {
       }
     },
   
-    /**
-     * Returns array of page IDs that link to the given pageId.
-     * Powers the "What links here" sidebar feature.
-     */
     getBacklinks: function (pageId) {
       var results = [];
       var ids = Object.keys(this.pages);
@@ -176,9 +163,6 @@ const SHALIpedia = {
       return results;
     },
   
-    /**
-     * Returns array of {id, ...pageData} for all pages in the given category.
-     */
     getByCategory: function (category) {
       var results = [];
       var ids = Object.keys(this.pages);
@@ -197,10 +181,6 @@ const SHALIpedia = {
       return results;
     },
   
-    /**
-     * Returns pages grouped by category, filtered to showOnHomepage: true.
-     * Result shape: { "Category Name": [{id, ...pageData}, ...], ... }
-     */
     getHomepagePages: function () {
       var grouped = {};
       var ids = Object.keys(this.pages);
@@ -220,17 +200,10 @@ const SHALIpedia = {
       return grouped;
     },
   
-    /**
-     * Returns true if a page with the given ID exists in the registry.
-     * Used for blue vs red link styling.
-     */
     pageExists: function (pageId) {
       return this.pages.hasOwnProperty(pageId);
     },
   
-    /**
-     * Returns array of unique category strings.
-     */
     getCategories: function () {
       var seen = {};
       var categories = [];
@@ -245,11 +218,6 @@ const SHALIpedia = {
       return categories;
     },
   
-    /**
-     * Case-insensitive substring search on title and description.
-     * Returns up to 8 results as {id, title, category, path},
-     * sorted with title matches first, then description matches.
-     */
     search: function (query) {
       if (!query) return [];
       var q = query.toLowerCase();
@@ -274,37 +242,20 @@ const SHALIpedia = {
       return titleMatches.concat(descMatches).slice(0, 8);
     },
   
-    /**
-     * Returns the page object for a given ID, or null if not found.
-     */
     getPage: function (pageId) {
       return this.pages[pageId] || null;
     },
   
-    /**
-     * Returns array of all page IDs.
-     */
     getAllPageIds: function () {
       return Object.keys(this.pages);
     },
   
-    /**
-     * Returns true if the page has an empty linksTo array.
-     * Used to determine whether to show a "return to home" button.
-     */
     isEndNode: function (pageId) {
       var page = this.pages[pageId];
       if (!page) return false;
       return page.linksTo.length === 0;
     },
   
-    /**
-     * Computes the correct relative path from one page to another
-     * based on their directory depths. Critical for cross-directory navigation.
-     *
-     * Example: from "pages/research-experience/foo.html" to "pages/technical-skills.html"
-     *          yields "../../pages/technical-skills.html" (go up 2 levels from the file's dir)
-     */
     resolveRelativePath: function (fromPageId, toPageId) {
       var fromPage = this.pages[fromPageId];
       var toPage = this.pages[toPageId];
@@ -313,24 +264,20 @@ const SHALIpedia = {
       var fromParts = fromPage.path.split("/");
       var toParts = toPage.path.split("/");
   
-      // Remove the filename to get the directory segments
       var fromDir = fromParts.slice(0, fromParts.length - 1);
       var toDir = toParts.slice(0, toParts.length - 1);
   
-      // Find common prefix length
       var common = 0;
       while (common < fromDir.length && common < toDir.length && fromDir[common] === toDir[common]) {
         common++;
       }
   
-      // Go up from fromDir to common ancestor
       var ups = fromDir.length - common;
       var prefix = "";
       for (var i = 0; i < ups; i++) {
         prefix += "../";
       }
   
-      // Then go down to the target
       var remainingPath = toParts.slice(common).join("/");
       return prefix + remainingPath;
     }

@@ -13,53 +13,43 @@
     <table class="infobox">
       <caption class="infobox-title">AI for All</caption>
       <tbody>
-        <tr><th>Type</th><td>Independent Research</td></tr>
-        <tr><th>Duration</th><td>November 2023 – January 2024</td></tr>
-        <tr><th>Award</th><td>🥈 2nd Place, Vanderbilt DSI AI Symposium 2023</td></tr>
-        <tr><th>Model</th><td><a class="external" href="https://en.wikipedia.org/wiki/GPT-2">GPT-2</a> (fine-tuned)</td></tr>
-        <tr><th>Framework</th><td>Python, Hugging Face Transformers</td></tr>
-        <tr><th>Skills Used</th><td><a href="../../pages/technical-skills.html" data-page="technical-skills">NLP, fine-tuning, dataset curation, Python</a></td></tr>
-        <tr><th>Status</th><td>Completed</td></tr>
+        <tr><th>Type</th><td>Personal Project — Generative AI / NLP</td></tr>
+        <tr><th>Model</th><td>GPT-2 (fine-tuned)</td></tr>
+        <tr><th>Dataset</th><td>Equity scholarship — critical race studies, feminist theory, postcolonial studies</td></tr>
+        <tr><th>Award</th><td>2nd Place, Vanderbilt DSI AI Symposium 2023</td></tr>
+        <tr><th>Repository</th><td><a class="external" href="https://github.com/intro-gen-ai/ai-for-all">GitHub</a></td></tr>
       </tbody>
     </table>
 
     <p class="overview">
-      <b>AI for All</b> is an independent research project exploring how <a class="external" href="https://en.wikipedia.org/wiki/Natural_language_processing">NLP</a> can surface underrepresented scholarly perspectives on systemic inequity. Shalini curated a custom dataset of academic literature from scholars analyzing power dynamics and marginalization, fine-tuned <a class="external" href="https://en.wikipedia.org/wiki/GPT-2">GPT-2</a> on this corpus, and developed an approach for constructive AI-generated dialogue that spotlights excluded voices. The project draws on <a href="../../pages/literature.html" data-page="literature">literature</a> and <a href="../../pages/political-science.html" data-page="political-science">political science</a>, demonstrates advanced <a href="../../pages/technical-skills.html" data-page="technical-skills">technical skills</a>, and won 2nd place at the 2023 Vanderbilt DSI AI Symposium.
+      AI for All fine-tuned GPT-2 on a curated corpus of academic scholarship focused on equity — critical race studies, feminist theory, and postcolonial studies — to explore whether a language model trained on this literature would generate text that reflects its values and frameworks. The project won 2nd place at the Vanderbilt DSI AI Symposium in 2023. Code is available on <a class="external" href="https://github.com/intro-gen-ai/ai-for-all">GitHub</a>. See also <a href="../../pages/literature.html" data-page="literature">Literature</a>, <a href="../../pages/political-science.html" data-page="political-science">Political Science</a>, and <a href="../../pages/technical-skills.html" data-page="technical-skills">Technical Skills</a>.
     </p>
 
     <div id="toc" class="toc"></div>
 
     <h2><span class="mw-headline" id="Motivation">Motivation</span></h2>
-    <p>Mainstream language models are trained predominantly on text that reflects dominant cultural perspectives — marginalizing, erasing, or distorting the voices of communities that have historically been excluded from canonical discourse. AI for All asks: what would a language model look like if it were trained to center the scholarship of those communities? Could AI be used not to replicate existing inequities but to raise consciousness about them?</p>
+    <p>Most large language models are trained on internet-scale data that over-represents certain perspectives and under-represents others. AI for All asked a pointed question: what if the training corpus was deliberately curated around scholarship that centers equity, justice, and the experiences of marginalized communities? Would a model trained on that corpus generate text that reflects those frameworks? The project was an exploration of how training data shapes a model's implicit worldview.</p>
 
-    <h2><span class="mw-headline" id="Dataset_Curation">Dataset Curation</span></h2>
-    <p>The dataset was curated from literature by scholars analyzing power dynamics in society, examining systemic inequity and barriers faced by marginalized communities. This required both subject-matter judgment — selecting texts that genuinely represented excluded perspectives — and technical rigor in structuring the corpus for machine learning.</p>
+    <h2><span class="mw-headline" id="Dataset">Dataset</span></h2>
+    <p>The training corpus was assembled from academic works in critical race studies, feminist theory, and postcolonial studies — scholarship that analyzes systems of power, structural inequity, and the politics of representation. Shalini drew on her English minor at Vanderbilt and her engagement with <a href="../../pages/literature.html" data-page="literature">critical theory</a> to select and curate the texts. See the <a href="../../pages/literature.html" data-page="literature">Literature</a> page for more on the scholarly tradition the corpus draws from.</p>
 
-    <h3><span class="mw-headline" id="Source_Literature">Source Literature</span></h3>
-    <p>The corpus draws from scholarship in critical race theory, feminist theory, postcolonial studies, and related fields. <!-- Add: specific scholars, journals, or texts included -- this is a great place to name-drop the thinkers whose work shaped the dataset. See also <a href="../../pages/literature.html" data-page="literature">Literature</a>. --></p>
+    <h2><span class="mw-headline" id="Model_and_Training">Model and Training</span></h2>
+    <p>The project fine-tuned <a class="external" href="https://en.wikipedia.org/wiki/GPT-2">GPT-2</a> on the equity scholarship corpus using standard <a class="external" href="https://en.wikipedia.org/wiki/Fine-tuning_(deep_learning)">fine-tuning</a> techniques. Fine-tuning a pre-trained model on a domain-specific corpus allows the model to adapt its outputs toward the vocabulary, tone, and frameworks of that domain without training from scratch. The full code and training pipeline are available on <a class="external" href="https://github.com/intro-gen-ai/ai-for-all">GitHub</a>.</p>
 
-    <h3><span class="mw-headline" id="Data_Validation">Data Validation and Metadata</span></h3>
-    <p>Comprehensive data validation methods were implemented to ensure dataset quality and representativeness. Quantitative datasets from diverse textual sources were managed and structured with standardized metadata and categorization systems — treating the corpus as a research artifact in its own right.</p>
+    <h2><span class="mw-headline" id="Results_and_Recognition">Results and Recognition</span></h2>
+    <p>The project won 2nd place at the Vanderbilt Data Science Institute AI Symposium in 2023. The evaluation centered on the quality and coherence of the generated text and the originality of the project's framing. See <a href="../../pages/fellowships-and-awards.html" data-page="fellowships-and-awards">Fellowships and Awards</a> for the full record.</p>
 
-    <h2><span class="mw-headline" id="Model_Fine_Tuning">Model Fine-Tuning</span></h2>
-    <p><a class="external" href="https://en.wikipedia.org/wiki/GPT-2">GPT-2</a> was fine-tuned on the curated corpus using a Python script with Hugging Face Transformers. The fine-tuning process adapted GPT-2's language modeling objective to the specific vocabulary, concepts, and argumentative patterns of the selected scholarship.</p>
-
-    <p>The goal was not simply to produce outputs that <i>sounded like</i> the source texts, but to develop a constructive approach for AI to spotlight excluded voices and raise consciousness — through respectful, grounded elucidation of racial, gender, and socioeconomic challenges rather than reductive imitation.</p>
-
-    <h2><span class="mw-headline" id="Results">Results and Symposium</span></h2>
-    <p>The project was presented at the <b>2023 Vanderbilt Data Science Institute AI Symposium</b>, where it won 2nd place, recognizing excellence in AI-related research. The presentation demonstrated both the technical fine-tuning work and the broader interdisciplinary framing of the project. The same symposium also recognized Shalini's work on the <a href="../../pages/research-experience/future-of-free-speech.html" data-page="future-of-free-speech">Future of Free Speech Project</a> as a finalist. <!-- Add: details about the symposium presentation, judges, audience --></p>
-
-    <h2><span class="mw-headline" id="Ethical_Considerations">Ethical Considerations</span></h2>
-    <p>Building a model meant to speak in the register of marginalized scholarship raises genuine ethical questions: Who has authority to curate such a corpus? How should a model avoid ventriloquizing the communities it aims to represent? These questions informed the design of the project and connect directly to Shalini's <a href="../../pages/research-interests.html" data-page="research-interests">research interests</a> in algorithmic fairness and responsible AI.</p>
+    <h2><span class="mw-headline" id="Connection_to_Research">Connection to Research Interests</span></h2>
+    <p>AI for All connects directly to Shalini's broader <a href="../../pages/research-interests.html" data-page="research-interests">research interests</a> in algorithmic fairness. The project is an empirical demonstration of a core fairness question: training data is not neutral, and the choices made in assembling a corpus have downstream consequences for what a model can and cannot say, whose perspectives it reflects, and whose it erases. It also draws on her interest in <a href="../../pages/political-science.html" data-page="political-science">political science</a> — specifically, how power dynamics and structural inequity show up in the way knowledge is produced and distributed.</p>
 
     <div id="see-also"></div>
     <div id="what-links-here"></div>
 
     <h2><span class="mw-headline" id="References">References</span></h2>
     <ol class="references">
-      <li id="ref-1"><a href="https://en.wikipedia.org/wiki/GPT-2" class="external">GPT-2 — Wikipedia</a>.</li>
-      <li id="ref-2"><a href="https://en.wikipedia.org/wiki/Fine-tuning_(deep_learning)" class="external">Fine-tuning (deep learning) — Wikipedia</a>.</li>
-      <li id="ref-3"><a href="https://en.wikipedia.org/wiki/Critical_race_theory" class="external">Critical Race Theory — Wikipedia</a>.</li>
+      <li id="ref-1"><a href="https://github.com/intro-gen-ai/ai-for-all" class="external">AI for All — GitHub</a>.</li>
+      <li id="ref-2"><a href="https://en.wikipedia.org/wiki/GPT-2" class="external">GPT-2 — Wikipedia</a>.</li>
+      <li id="ref-3"><a href="https://en.wikipedia.org/wiki/Fine-tuning_(deep_learning)" class="external">Fine-tuning — Wikipedia</a>.</li>
     </ol>
 
     <div id="catlinks" class="catlinks"></div>
